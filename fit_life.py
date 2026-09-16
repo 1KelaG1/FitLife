@@ -22,11 +22,11 @@ LINE = f"{CYAN}{'─' * 50}{RESET}"
 print()
 print(f"{CYAN}{'═' * 50}{RESET}")  # верхняя двойная линия
 print(
-    f"{BOLD}{MAGENTA}     📋  АНКЕТА ЗДОРОВЬЯ — ШАГ 1 ИЗ 4{RESET}"
+    f"{BOLD}{MAGENTA}     📋  АНКЕТА ЗДОРОВЬЯ — ШАГ 1 ИЗ 4{RESET}",
 )  # заголовок шага
 print(f"{CYAN}{'═' * 50}{RESET}")  # нижняя двойная линия
 print(
-    f"{DIM}  Подсказка: имя можно вводить в любом регистре{RESET}"
+    f"{DIM}  Подсказка: имя можно вводить в любом регистре{RESET}",
 )  # подсказка
 print(LINE)  # тонкая линия
 
@@ -96,7 +96,7 @@ bar_length = 30
 # сколько ячеек закрасить
 filled = int(min(water_l / 3, 1) * bar_length)
 # заполненные + пустые
-bar = "█" * filled + "░" * (bar_length - filled)
+water_bar = "█" * filled + "░" * (bar_length - filled)
 
 
 # ---------- ОТЧЁТ ----------
@@ -117,12 +117,12 @@ print(f"{CYAN}{'─' * 50}{RESET}")
 # ИМТ + категория
 print(
     f"  {bmi_emoji}  {BOLD}ИМТ:{RESET}          "
-    f"{bmi}  ({bmi_category})"
+    f"{bmi}  ({bmi_category})",
 )
 # норма воды
 print(f"  💧  {BOLD}Норма воды:{RESET}  {water_l} л в день")
 # прогресс-бар
-print(f"      [{GREEN}{bar}{RESET}]  {water_l} / 3.0 л")
+print(f"      [{GREEN}{water_bar}{RESET}]  {water_l} / 3.0 л")
 # нижняя линия
 print(f"{CYAN}{'═' * 50}{RESET}")
 # финал
