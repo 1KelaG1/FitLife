@@ -22,7 +22,7 @@ LINE = f"{CYAN}{'─' * 50}{RESET}"
 print()
 print(f"{CYAN}{'═' * 50}{RESET}")  # верхняя двойная линия
 print(
-    f"{BOLD}{MAGENTA}     📋  АНКЕТА ЗДОРОВЬЯ — ШАГ 1 ИЗ 4{RESET}",
+    f"{BOLD}{MAGENTA}        АНКЕТА ЗДОРОВЬЯ — ШАГ 1 ИЗ 4{RESET}",
 )  # заголовок шага
 print(f"{CYAN}{'═' * 50}{RESET}")  # нижняя двойная линия
 print(
@@ -31,42 +31,42 @@ print(
 print(LINE)  # тонкая линия
 
 # Ввод имени: strip() убирает пробелы по краям, title() делает «Иван» из «иван»
-user_name = input(f"{BOLD}{GREEN}  ➤ Ваше имя:{RESET} ").strip().title()
+user_name = input(f"{BOLD}{GREEN}   Ваше имя:{RESET} ").strip().title()
 
 
 # ---------- ШАГ 2: ВВОД ВОЗРАСТА ----------
 print(LINE)
-print(f"{BOLD}{MAGENTA}     📋  АНКЕТА ЗДОРОВЬЯ — ШАГ 2 ИЗ 4{RESET}")
+print(f"{BOLD}{MAGENTA}        АНКЕТА ЗДОРОВЬЯ — ШАГ 2 ИЗ 4{RESET}")
 print(f"{DIM}  Подсказка: целое число, например 25{RESET}")
 print(LINE)
 
 # int() — превращает строку в целое число
-user_age = int(input(f"{BOLD}{GREEN}  ➤ Ваш возраст (лет):{RESET} "))
+user_age = int(input(f"{BOLD}{GREEN}   Ваш возраст (лет):{RESET} "))
 
 
 # ---------- ШАГ 3: ВВОД ВЕСА ----------
 print(LINE)
-print(f"{BOLD}{MAGENTA}     📋  АНКЕТА ЗДОРОВЬЯ — ШАГ 3 ИЗ 4{RESET}")
+print(f"{BOLD}{MAGENTA}        АНКЕТА ЗДОРОВЬЯ — ШАГ 3 ИЗ 4{RESET}")
 print(f"{DIM}  Подсказка: можно с точкой, например 70.5{RESET}")
 print(LINE)
 
 # float() — превращает строку в число с плавающей точкой
-user_weight = float(input(f"{BOLD}{GREEN}  ➤ Ваш вес (кг):{RESET} "))
+user_weight = float(input(f"{BOLD}{GREEN}   Ваш вес (кг):{RESET} "))
 
 
 # ---------- ШАГ 4: ВВОД РОСТА ----------
 print(LINE)
-print(f"{BOLD}{MAGENTA}     📋  АНКЕТА ЗДОРОВЬЯ — ШАГ 4 ИЗ 4{RESET}")
+print(f"{BOLD}{MAGENTA}        АНКЕТА ЗДОРОВЬЯ — ШАГ 4 ИЗ 4{RESET}")
 print(f"{DIM}  Подсказка: в метрах, например 1.75{RESET}")
 print(LINE)
 
 # Рост в метрах (важно: не в сантиметрах, иначе формула ИМТ даст чушь)
-user_height = float(input(f"{BOLD}{GREEN}  ➤ Ваш рост (м):{RESET} "))
+user_height = float(input(f"{BOLD}{GREEN}   Ваш рост (м):{RESET} "))
 
 
 # ---------- ЗАВЕРШЕНИЕ ВВОДА ----------
 print(LINE)
-print(f"{BOLD}{GREEN}  ✅  Все данные получены! Считаю...{RESET}")
+print(f"{BOLD}{GREEN}  ВСЕ ДАННЫЕ ПОЛУЧЕНЫ! Считаю...{RESET}")
 print(LINE)
 
 
@@ -75,19 +75,21 @@ print(LINE)
 bmi = round(user_weight / (user_height ** 2), 1)
 
 # Норма воды: 30 мл на 1 кг веса → переводим в литры делением на 1000
-water_l = round(user_weight * 30 / 1000, 1)
+WATER_BASE = 30
+LITER = 1000
+water_l = round(user_weight * WATER_BASE / LITER, 1)
 
 
 # ---------- КАТЕГОРИЯ ИМТ ----------
-# Определяем, в какую категорию попал ИМТ, и подбираем цветной маркер
+# Определяем, в какую категорию попал ИМТ
 if bmi < 18.5:
-    bmi_category, bmi_emoji = "Недостаточный вес", "🔵"
+    bmi_category = "Недостаточный вес"
 elif bmi < 25:
-    bmi_category, bmi_emoji = "Норма", "🟢"
+    bmi_category = "Норма"
 elif bmi < 30:
-    bmi_category, bmi_emoji = "Избыточный вес", "🟡"
+    bmi_category = "Избыточный вес"
 else:
-    bmi_category, bmi_emoji = "Ожирение", "🔴"
+    bmi_category = "Ожирение"
 
 
 # ---------- ПРОГРЕСС-БАР ВОДЫ ----------
@@ -102,30 +104,30 @@ water_bar = "█" * filled + "░" * (bar_length - filled)
 # ---------- ОТЧЁТ ----------
 print()
 print(f"{CYAN}{'═' * 50}{RESET}")
-print(f"{BOLD}{MAGENTA}        📋  ОТЧЁТ О ЗДОРОВЬЕ  📋{RESET}")
+print(f"{BOLD}{MAGENTA}          ОТЧЁТ О ЗДОРОВЬЕ{RESET}")
 print(f"{CYAN}{'═' * 50}{RESET}")
 # имя
-print(f"  👤  {BOLD}Пользователь:{RESET}  {user_name}")
+print(f"  {BOLD}Пользователь:{RESET}  {user_name}")
 # возраст
-print(f"  🎂  {BOLD}Возраст:     {RESET}  {user_age} лет")
+print(f"  {BOLD}Возраст:     {RESET}  {user_age} лет")
 # вес
-print(f"  ⚖️   {BOLD}Вес:         {RESET}  {user_weight} кг")
+print(f"  {BOLD}Вес:         {RESET}  {user_weight} кг")
 # рост
-print(f"  📏  {BOLD}Рост:        {RESET}  {user_height} м")
+print(f"  {BOLD}Рост:        {RESET}  {user_height} м")
 # разделитель
 print(f"{CYAN}{'─' * 50}{RESET}")
 # ИМТ + категория
 print(
-    f"  {bmi_emoji}  {BOLD}ИМТ:{RESET}          "
+    f"  {BOLD}ИМТ:{RESET}          "
     f"{bmi}  ({bmi_category})",
 )
 # норма воды
-print(f"  💧  {BOLD}Норма воды:{RESET}  {water_l} л в день")
+print(f"  {BOLD}Норма воды:{RESET}  {water_l} л в день")
 # прогресс-бар
 print(f"      [{GREEN}{water_bar}{RESET}]  {water_l} / 3.0 л")
 # нижняя линия
 print(f"{CYAN}{'═' * 50}{RESET}")
 # финал
-print(f"{BOLD}{GREEN}  ✅  Расчёт окончен. Будьте здоровы! 💪{RESET}")
+print(f"{BOLD}{GREEN}  РАСЧЁТ ОКОНЧЕН. БУДЬТЕ ЗДОРОВЫ!{RESET}")
 print(f"{CYAN}{'═' * 50}{RESET}")
 print()
